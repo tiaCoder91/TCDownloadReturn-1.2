@@ -8,8 +8,9 @@
 #import "../../TCWindowController.h"
 
 @interface TCThread : NSThread
-@property (nonatomic, strong) TCWindowController *controller;
+@property (nonatomic, strong, nullable) TCWindowController *controller;
 @property (nonatomic) int myId;
+- (instancetype _Nullable)initWithController:(TCWindowController * _Nullable)controller;
 - (void)okButton;
-- (void)runLoop:(TCView *)t_view;
+- (void)runLoop:(TCView * _Nullable)t_view;
 @end

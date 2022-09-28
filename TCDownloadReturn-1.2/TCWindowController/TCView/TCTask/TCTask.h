@@ -8,6 +8,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TCTask : NSTask
-- (NSString *)myThread:(NSThread *)thread script:(NSString *)my_script withTextView:(NSTextView *)textView;
+- (NSString *)myThread:(NSThread *)thread script:(NSString *)my_script;
 @end
 

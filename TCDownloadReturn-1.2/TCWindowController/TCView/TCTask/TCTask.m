@@ -9,7 +9,7 @@
 
 @implementation TCTask
 
-- (NSString *)myThread:(NSThread *)thread script:(NSString *)my_script withTextView:(NSTextView *)textView {
+- (NSString *)myThread:(NSThread *)thread script:(NSString *)my_script {
     //NSBundle *mainBundle = [NSBundle mainBundle];
     
     NSString *path = @"/tmp/data_script.sh";
@@ -35,11 +35,11 @@
     [task setStandardOutput: pipe];
     [task setStandardError: pipe];
 
-    NSFileHandle *file = [pipe fileHandleForReading];
+    NSFileHandle *handle = [pipe fileHandleForReading];
 
     [task launch];
     
-    NSData *data = [file readDataToEndOfFile];
+    NSData *data = [handle readDataToEndOfFile];
     
     NSString *output = [[NSString alloc]
               initWithData:data
@@ -48,13 +48,13 @@
     
     NSLog(@"output: %@", output);
     
-    /*
+    
     // QUESTA È UNA PAUSA DEL THREAD
     for (int i = 0; i<3; i++) {
         sleep(1);
         NSLog(@"second = %i : thread = %@", i, [thread name]);
     }
-    */
+    
     
     return output;
 }
